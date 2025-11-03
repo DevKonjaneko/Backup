@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dowksmuyemscc"]
+
+[ext_resource type="Script" uid="uid://bcdbjedgdj1md" path="res://Resources/core/Music_manager.gd" id="1_22wl1"]
+[ext_resource type="AudioStream" uid="uid://5g6tsjegyyk7" path="res://Assets/sounds/horror_background/Horror Background.mp3" id="2_h3tok"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_22wl1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_h3tok")

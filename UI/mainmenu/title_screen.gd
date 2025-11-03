@@ -2,9 +2,12 @@ extends CanvasLayer
 
 @onready var sub_viewport = $background/SubViewportContainer/SubViewport
 
+
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE #
 	
+	MusicManager.play_bgm()
+	
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE #
 	var current_res = globalsetting.current_resolution
 	sub_viewport.size = Vector2(current_res.x, current_res.y)
 

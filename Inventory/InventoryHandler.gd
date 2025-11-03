@@ -118,7 +118,3 @@ func GetWorldMousePosition() -> Vector3:
 		return results["position"] as Vector3 + Vector3(0.0, 0.75, 3.0)
 	else:
 		return ray_start.lerp(ray_end, 0.5) + Vector3(0.0, 0.75, 3.0)
-
-
-func UseKeyItem(item: ItemData):
-	pass

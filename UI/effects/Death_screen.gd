@@ -3,12 +3,10 @@ extends Control #DeathScreen v1.0
 @onready var respawn_button = $VBoxContainer/Respawn
 
 func _ready() -> void:
-	# Hide
 	hide()
-	
 	# Connect
-	if respawn_button:
-		respawn_button.pressed.connect(_on_respawn_pressed)
+	#if respawn_button:
+		#respawn_button.pressed.connect(_on_respawn_pressed)
 
 #Respawn
 func _on_respawn_pressed() -> void:

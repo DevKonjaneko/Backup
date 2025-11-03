@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://buk3vrt77hvav"]
+[gd_scene load_steps=17 format=3 uid="uid://buk3vrt77hvav"]
 
 [ext_resource type="StyleBox" uid="uid://drb4jb5uwpbil" path="res://Resources/team & stylebox/hover_button.tres" id="2_7plpx"]
 [ext_resource type="Shader" uid="uid://xe3w7kqi8snw" path="res://Resources/shaders/new_shader.gdshader" id="2_j8qi8"]
@@ -33,7 +33,11 @@ volumetric_fog_emission = Color(0.19607843, 0.3137255, 0.47058824, 1)
 volumetric_fog_emission_energy = 0.3
 volumetric_fog_sky_affect = 0.3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uprpa"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="Theme" id="Theme_taypn"]
+Button/styles/focus = SubResource("StyleBoxFlat_uprpa")
 Button/styles/hover = ExtResource("2_7plpx")
 Button/styles/normal = ExtResource("3_j8qi8")
 

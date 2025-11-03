@@ -8,6 +8,8 @@ extends Control #note_ui v2.1
 @onready var button4 = $ColorRect/Panel/VBoxContainer/HBoxContainer/button4
 @onready var button = $ColorRect/Panel/VBoxContainer/Back
 
+@onready var player = get_tree().current_scene.get_node("PlayerBody")
+
 var current_correct_answer: int = 0
 
 func Hide_and_Unpaused():
@@ -34,7 +36,7 @@ func show_note(note_text: String, font_size: int = 24, correct_answer: int = 0) 
 	
 func _input(event):
 	if visible and event.is_action_pressed("ui_cancel"):
-		get_viewport().set_input_as_handled() # ⭐ บล็อก Input ไม่ให้ส่งต่อ
+		get_viewport().set_input_as_handled()
 		_on_close_button_pressed()
 
 func _on_close_button_pressed() -> void:
@@ -42,8 +44,8 @@ func _on_close_button_pressed() -> void:
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	print("Close_Note")
-	#ต้องคืนค่า var has_been_answered: bool = false ให้เหมือนเดิมแต่จะลิ้งยังไง
-
+	if player.has_method("take_damage"):
+		player.take_damage(25)
 # Choose
 func _button_1_pressed() -> void:
 	check_answer(0)
@@ -68,6 +70,6 @@ func check_answer(selected_index: int) -> void:
 	else:
 		print("❌ Wrong!")
 		# Decrease HP 10
-		var player = get_tree().current_scene.get_node("PlayerBody")
+		#var player = get_tree().current_scene.get_node("PlayerBody")
 		if player.has_method("take_damage"):
-			player.take_damage(10)
+			player.take_damage(25)

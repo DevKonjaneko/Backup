@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtc8rqfr1exxq"]
+[gd_scene load_steps=17 format=3 uid="uid://dtc8rqfr1exxq"]
 
 [ext_resource type="Script" uid="uid://b5iaj4fpvcaqr" path="res://UI/mainmenu/title_screen.gd" id="1_gqdoy"]
 [ext_resource type="PackedScene" uid="uid://bl0h3mi0qhq4f" path="res://Scene/_main_s/Village.tscn" id="2_8tth6"]
@@ -33,7 +33,11 @@ volumetric_fog_emission = Color(0.19607843, 0.3137255, 0.47058824, 1)
 volumetric_fog_emission_energy = 0.3
 volumetric_fog_sky_affect = 0.3
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8tth6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="Theme" id="Theme_g30yf"]
+Button/styles/focus = SubResource("StyleBoxFlat_8tth6")
 Button/styles/hover = ExtResource("2_q4w3y")
 Button/styles/normal = ExtResource("2_q4w3y")
 
@@ -163,9 +167,6 @@ theme_override_constants/margin_bottom = 64
 layout_mode = 2
 theme = SubResource("Theme_e8eer")
 text = "Press Any Key"
-
-[node name="transitionscreen" parent="Control" instance=ExtResource("2_g30yf")]
-layout_mode = 1
 
 [node name="transitionscreen" parent="." instance=ExtResource("2_g30yf")]
 

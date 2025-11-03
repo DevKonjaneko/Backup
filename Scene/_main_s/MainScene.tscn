@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dit5fjgxvvysf"]
+[gd_scene load_steps=19 format=3 uid="uid://dit5fjgxvvysf"]
 
 [ext_resource type="PackedScene" uid="uid://bl0h3mi0qhq4f" path="res://Scene/_main_s/Village.tscn" id="1_c6k8p"]
 [ext_resource type="PackedScene" uid="uid://cr16qvxkng034" path="res://Player/player.tscn" id="2_csiqh"]
@@ -6,12 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://r61bfbf25gcy" path="res://Scene/note_s/Note.tscn" id="3_mbwnc"]
 [ext_resource type="PackedScene" uid="uid://cuiklvlmyu8n6" path="res://Scene/object_s/TestCube.tscn" id="4_e41yp"]
 [ext_resource type="PackedScene" uid="uid://b76niexsnwx45" path="res://UI/effects/transitionscreen.tscn" id="4_mbwnc"]
-[ext_resource type="Texture2D" uid="uid://bbfc5tpke1l6g" path="res://Textures/noise/Fingerprints01_3K.png" id="5_q41ih"]
 [ext_resource type="PackedScene" uid="uid://cql47emoguxmu" path="res://Scene/object_s/Battery.tscn" id="6_csiqh"]
+[ext_resource type="PackedScene" uid="uid://vpj1as60wxq7" path="res://Scene/interact_s/PressurePlate.tscn" id="8_q41ih"]
 [ext_resource type="PackedScene" uid="uid://ckrc1qq74bsae" path="res://Scene/decal_s/photography.tscn" id="9_4bh3e"]
-[ext_resource type="Texture2D" uid="uid://dvnfa3mgd3k8f" path="res://Textures/pictures/Screenshot 2025-10-30 183943.png" id="10_4bh3e"]
-[ext_resource type="Texture2D" uid="uid://bwih8ejk5lx73" path="res://Textures/pictures/Screenshot 2025-10-30 183850.png" id="10_ywl1d"]
-[ext_resource type="Texture2D" uid="uid://djj38f6idwtcx" path="res://Textures/pictures/image3.png" id="11_q41ih"]
+[ext_resource type="PackedScene" uid="uid://dvtycee8q36h6" path="res://Scene/interact_s/Door/standard_Door.tscn" id="9_evdw8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xdm7g"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -42,6 +40,12 @@ volumetric_fog_sky_affect = 0.3
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4bh3e"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ywl1d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q41ih"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ywl1d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_evdw8"]
 
 [node name="TestScene" type="Node3D"]
 
@@ -87,7 +91,6 @@ font_size = 25
 
 [node name="Note3" parent="." instance=ExtResource("3_mbwnc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.641976, 1.1527436, -3.2895126)
-albedo_texture = ExtResource("5_q41ih")
 note_text = "3.“บนโลกออนไลน์… ไม่ใช่ทุกคนที่เป็นเพื่อนแท้”
 การหลอกให้เผยข้อมูลส่วนตัวเรียกว่าอะไร?
 A. Social Engineering
@@ -357,6 +360,15 @@ C. มีโฆษณาไหม
 D. มีเพื่อนแชร์ไหม"
 font_size = 25
 
+[node name="Note28" parent="." instance=ExtResource("3_mbwnc")]
+transform = Transform3D(0.7633228, 0, 0.64601743, 0, 1, 0, -0.64601743, 0, 0.7633228, 8.85427, 0.5369522, -13.358624)
+note_story = true
+note_text = "แกคิดว่าแกจะรอดไปจากที่นี่ได้ยังงั้นหลอ
+ᛁᛏ ᚹᛁᛚᛚ ᚠᛁᚾᛞ ᛁᛟᚢ
+ร̴อ̴ด̴ไ̸ป̸ไ̴ห̵น̵?̸ ̴เ̸ร̴า̴เ̸ห็̵น̷ต̴ล̴อ̵ด̴ ⏚⏂⎎⎍⟒⏚⏧ ⎎⎍⟟⏣⟒"
+font_size = 25
+correct_answer = 0
+
 [node name="TestCube" parent="." instance=ExtResource("4_e41yp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16850662, 0.6131738, 0.27270618)
 physics_material_override = SubResource("PhysicsMaterial_4bh3e")
@@ -392,14 +404,30 @@ transform = Transform3D(-0.8668174, -0.09514406, 0.4894641, -0.011278823, 0.9851
 [node name="Battery9" parent="." instance=ExtResource("6_csiqh")]
 transform = Transform3D(0.7074036, -7.450581e-09, 0.70681113, 0, 1, -3.7252903e-09, -0.7068112, 0, 0.7074036, 6.51552, 4.767303, -0.036524057)
 
-[node name="Photography" parent="." instance=ExtResource("9_4bh3e")]
+[node name="Door" parent="." instance=ExtResource("9_evdw8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.95, -6.6907926, 1.8421156, 5.0419617)
+
+[node name="PressurePlate" parent="." node_paths=PackedStringArray("toggle_to") instance=ExtResource("8_q41ih")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0738835, -0.067978084, 5.0419617)
+toggle_to = NodePath("../Door")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Pickupable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.698879, 2.0498242)
+collision_layer = 2
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_q41ih")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("BoxMesh_ywl1d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_evdw8")
+
+[node name="Photography" parent="." groups=["Pickupable"] instance=ExtResource("9_4bh3e")]
 transform = Transform3D(0.99982953, -0.018464535, 0, 0.018464535, 0.99982953, 0, 0, 0, 1, 6.865044, 2.2379806, -6.447181)
-picture_texture = ExtResource("10_4bh3e")
 
-[node name="Photography3" parent="." instance=ExtResource("9_4bh3e")]
+[node name="Photography3" parent="." groups=["Pickupable"] instance=ExtResource("9_4bh3e")]
 transform = Transform3D(-0.5415263, -0.063023925, 0.6202815, -0.0070462115, 0.6525464, 0.2173576, -0.31142628, 0.094825424, -1.0835003, 2.8964393, 3.4138124, -8.754313)
-picture_texture = ExtResource("11_q41ih")
 
-[node name="Photography2" parent="." instance=ExtResource("9_4bh3e")]
+[node name="Photography2" parent="." groups=["Pickupable"] instance=ExtResource("9_4bh3e")]
 transform = Transform3D(0.76955324, 0, 0, 0, 0.8617592, 0, 0, 0, 1, 7.425838, 2.3401484, -15.773146)
-picture_texture = ExtResource("10_ywl1d")

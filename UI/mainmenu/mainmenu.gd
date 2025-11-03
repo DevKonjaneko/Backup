@@ -1,20 +1,23 @@
 extends CanvasLayer
 
 @onready var sub_viewport = $background/SubViewportContainer/SubViewport
+@onready var load_game_button = $Control/MarginContainer/VBoxContainer/VBoxContainer/LoadGame_Button
 
 func _ready():
-	# แสดงเมาส์ในเมนู
+	MusicManager.play_bgm()
+	load_game_button.disabled = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
 	var current_res = globalsetting.current_resolution
 	sub_viewport.size = Vector2(current_res.x, current_res.y)
 
 func _on_new_game_button_pressed():
 	get_tree().change_scene_to_file("res://Scene/_main_s/MainScene.tscn")
-
+	MusicManager.stop_bgm()
+	
 func _on_load_game_button_pressed():
 	pass
-
+	MusicManager.stop_bgm()
+	
 func _on_option_button_pressed():
 	get_tree().change_scene_to_file("res://ui/mainmenu/options.tscn")
 

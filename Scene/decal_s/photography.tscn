@@ -1,6 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://ckrc1qq74bsae"]
+[gd_scene load_steps=17 format=4 uid="uid://ckrc1qq74bsae"]
 
 [ext_resource type="Script" uid="uid://optsmvjkvppp" path="res://Scene/decal_s/photography.gd" id="1_uwgo6"]
+[ext_resource type="Texture2D" uid="uid://dvnfa3mgd3k8f" path="res://Textures/pictures/Screenshot 2025-10-30 183943.png" id="2_uwgo6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uwgo6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt7qm"]
 resource_name = "Back"
@@ -159,29 +162,31 @@ shadow_mesh = SubResource("ArrayMesh_sr8tb")
 size = Vector3(2, 2.45, 0.12)
 
 [node name="Photography" type="Node3D"]
+
+[node name="PhysicsBody" type="RigidBody3D" parent="." groups=["Pickupable"]]
+physics_material_override = SubResource("PhysicsMaterial_uwgo6")
 script = ExtResource("1_uwgo6")
+picture_texture = ExtResource("2_uwgo6")
 
-[node name="Photography" type="StaticBody3D" parent="."]
-
-[node name="Object_2" type="MeshInstance3D" parent="Photography"]
+[node name="Object_2" type="MeshInstance3D" parent="PhysicsBody"]
 transform = Transform3D(1, 0, 0, 0, 2.220446e-16, 1, 0, -1, 2.220446e-16, 0, 0, 0)
 mesh = SubResource("ArrayMesh_uiqjm")
 skeleton = NodePath("")
 
-[node name="Object_3" type="MeshInstance3D" parent="Photography"]
+[node name="Object_3" type="MeshInstance3D" parent="PhysicsBody"]
 transform = Transform3D(1, 0, 0, 0, 2.220446e-16, 1, 0, -1, 2.220446e-16, 0, 0, 0)
 mesh = SubResource("ArrayMesh_6pfbh")
 skeleton = NodePath("")
 
-[node name="Object_4" type="MeshInstance3D" parent="Photography"]
+[node name="Object_4" type="MeshInstance3D" parent="PhysicsBody"]
 transform = Transform3D(1, 0, 0, 0, 2.220446e-16, 1, 0, -1, 2.220446e-16, 0, 0, 0)
 mesh = SubResource("ArrayMesh_v4jjc")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Photography"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PhysicsBody"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_a8wlm")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Photography"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsBody"]
 shape = SubResource("BoxShape3D_d0djo")

@@ -1,8 +1,6 @@
 extends Node3D
-#@onready var camera = $Camera3D
-var sensitivity: float = 0.016
 
-#ตัวแปรที่เกี่ยวกับระบบซูมแบบ Toggle
+var sensitivity: float = 0.016
 var is_zoomed_in: bool = false #ตัวแปรช่วยจำสถานะการซูม เริ่มต้นคือยังไม่ซูม
 @onready var camera = $Camera3D
 @export var default_fov   = 75.0  #ค่า FOV ปกติ
@@ -15,6 +13,7 @@ func _ready():
 func _input(event: InputEvent):
 	
 	if (event.is_action_pressed("Inventory")):
+		print("กดแล้วนะ")
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if (Input.mouse_mode == Input.MOUSE_MODE_VISIBLE) else Input.MOUSE_MODE_VISIBLE
 		
 	if event is InputEventMouseMotion:
@@ -29,11 +28,11 @@ func handle_camera_rotation(event: InputEventMouseMotion) -> void:
 	rotation.x = clamp(rotation.x, deg_to_rad(-75), deg_to_rad(75))
 
 func toggle_zoom() -> void:
-		is_zoomed_in = not is_zoomed_in
-		if is_zoomed_in:
-			tween_camera_fov(zoomed_in_fov)
-		else:
-			tween_camera_fov(default_fov)
+	is_zoomed_in = not is_zoomed_in
+	if is_zoomed_in:
+		tween_camera_fov(zoomed_in_fov)
+	else:
+		tween_camera_fov(default_fov)
 
 func tween_camera_fov(target_fov):
 	var tween = create_tween()

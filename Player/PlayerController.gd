@@ -129,10 +129,8 @@ func handle_gravity(delta):
 func update_heartbeat() -> void:
 	if not heartbeat or not heartbeat.stream:
 		return
-	
 	# คำนวณ % HP
 	var health_percent = (health / max_health) * 100.0
-	
 	# ⭐ กรณีที่ 1: HP น้อยกว่า 30% → เสียงหัวใจเต้นเร็ว
 	if health_percent < 30.0:
 		if not is_heartbeat:
@@ -141,7 +139,6 @@ func update_heartbeat() -> void:
 		# เล่นเร็วขึ้นเมื่อ HP ต่ำมาก
 		heartbeat.pitch_scale = 1.5 if health_percent < 15.0 else 1.2
 		heartbeat.volume_db = -10.0  # เสียงดังขึ้น
-		
 	# ⭐ กรณีที่ 2: HP ระหว่าง 30-50% → เสียงหัวใจเต้นช้า
 	elif health_percent < 50.0:
 		if not is_heartbeat:
@@ -149,15 +146,12 @@ func update_heartbeat() -> void:
 			is_heartbeat = true
 		heartbeat.pitch_scale = 1.0
 		heartbeat.volume_db = -15.0  # เสียงเบาลง
-		
 	# ⭐ กรณีที่ 3: HP มากกว่า 50% → ปิดเสียง
 	else:
 		if is_heartbeat:
 			heartbeat.stop()
 			is_heartbeat = false
-	
-	# ⭐ ฟังก์ชันรักษา (ใหม่!)
-
+			
 #⭐Healsystem
 func heal(amount: float) -> void:
 	health += amount
